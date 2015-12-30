@@ -7,7 +7,7 @@
 	
 	Version: 1.0
 ]]
-TOOL.Category = "Construction"
+TOOL.Category = "Prime Exclusive"
 TOOL.Name = "#Tool.advdupe2.name"
 cleanup.Register( "AdvDupe2" )
 require "controlpanel"
@@ -49,7 +49,7 @@ if(SERVER)then
 	
 	//Find all the entities in a box, given the adjacent corners and the player
 	local function FindInBox(min, max, ply)
-		local PPCheck = (tobool(ply:GetInfo("advdupe2_copy_only_mine")) and CPPI~=nil) and PlayerCanDupeCPPI or PlayerCanDupeTool
+		local PPCheck = PlayerCanDupeCPPI or PlayerCanDupeTool
 		local Entities = ents.GetAll() //Don't use FindInBox. It has a 512 entity limit.
 		local EntTable = {}
 		local pos, ent
@@ -194,7 +194,7 @@ if(SERVER)then
 			else
 				//select all owned props
 				Entities = {}
-				local PPCheck = (tobool(ply:GetInfo("advdupe2_copy_only_mine")) and CPPI~=nil) and PlayerCanDupeCPPI or PlayerCanDupeTool
+				local PPCheck = PlayerCanDupeCPPI or PlayerCanDupeTool
 				for _, ent in pairs(ents.GetAll()) do
 					if PPCheck( ply, ent ) then
 						Entities[ent:EntIndex()] = ent
@@ -1060,7 +1060,6 @@ if(CLIENT)then
 	CreateClientConVar("advdupe2_paste_unfreeze", 0, false, true)
 	CreateClientConVar("advdupe2_preserve_freeze", 0, false, true)
 	CreateClientConVar("advdupe2_copy_outside", 0, false, true)
-	CreateClientConVar("advdupe2_copy_only_mine", 1, false, true)
 	CreateClientConVar("advdupe2_limit_ghost", 100, false, true)
 	CreateClientConVar("advdupe2_area_copy_size", 300, false, true)
 	CreateClientConVar("advdupe2_auto_save_contraption", 0, false, true)
@@ -1155,14 +1154,6 @@ if(CLIENT)then
 		Check:SetValue( 0 )
 		Check:SetToolTip("Copy entities outside of the area copy that are constrained to entities insde")
 		CPanel:AddItem(Check)
-		
-		Check = vgui.Create("DCheckBoxLabel")
-		Check:SetText( "World/Area copy only your own props" )
-		Check:SetTextColor(Color(0,0,0,255))
-		Check:SetConVar( "advdupe2_copy_only_mine" ) 
-		Check:SetValue( 1 )
-		Check:SetToolTip("Copy entities outside of the area copy that are constrained to entities insde")
-		CPanel:AddItem(Check)
 
 		local NumSlider = vgui.Create( "DNumSlider" )
 		NumSlider:SetText( "Ghost Percentage:" )
@@ -1185,9 +1176,7 @@ if(CLIENT)then
 		NumSlider:SetText( "Area Copy Size:" )
 		NumSlider.Label:SetTextColor(Color(0,0,0,255))
 		NumSlider:SetMin( 0 )
-		local size = GetConVarNumber("AdvDupe2_MaxAreaCopySize") or 2500
-		if(size == 0)then size = 2500 end
-		NumSlider:SetMax( size )
+		NumSlider:SetMax( 1000 )
 		NumSlider:SetDecimals( 0 )
 		NumSlider:SetConVar( "advdupe2_area_copy_size" )
 		NumSlider:SetToolTip("Change the size of the area copy")
