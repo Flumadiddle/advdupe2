@@ -47,9 +47,9 @@ end
 
 
 
-/*-----------------------------------------------------------------------*
+--[[-----------------------------------------------------------------------*
  * Sets options for this spawner
- *-----------------------------------------------------------------------*/
+ *-----------------------------------------------------------------------]]--
 function ENT:SetOptions(ply, delay, undo_delay, key, undo_key, disgrav, disdrag, addvel )
 
 	self.delay = delay
@@ -157,13 +157,13 @@ function ENT:DoSpawn( ply )
 		self.EntityTable[k].PhysicsObjects[0].Angle = v:GetAngles()
 	end
 
-	/*local AngleOffset = self.EntAngle
+	--[[local AngleOffset = self.EntAngle
 	AngleOffset = self:GetAngles() - AngleOffset
 	local AngleOffset2 = Angle(0,0,0)
 	//AngleOffset2.y = AngleOffset.y
 	AngleOffset2:RotateAroundAxis(self:GetUp(), AngleOffset.y)
 	AngleOffset2:RotateAroundAxis(self:GetRight(),AngleOffset.p)
-	AngleOffset2:RotateAroundAxis(self:GetForward(),AngleOffset.r)*/
+	AngleOffset2:RotateAroundAxis(self:GetForward(),AngleOffset.r)]]--
 
 	local Ents, Constrs = AdvDupe2.duplicator.Paste(ply, table.Copy(self.EntityTable), table.Copy(self.ConstraintTable), nil, nil, Vector(0,0,0), true) 
 	local i = #self.UndoList+1
@@ -261,9 +261,9 @@ function ENT:ShowOutput()
 end
 
 
-/*-----------------------------------------------------------------------*
+--[[-----------------------------------------------------------------------*
  * Handler for spawn keypad input
- *-----------------------------------------------------------------------*/
+ *-----------------------------------------------------------------------]]--
 function SpawnContrSpawner( ply, ent )
 
 	if (!ent || !ent:IsValid()) then return end
@@ -280,9 +280,9 @@ function SpawnContrSpawner( ply, ent )
 	ent.LastSpawnTime=CurTime()+delay
 end
 
-/*-----------------------------------------------------------------------*
+--[[-----------------------------------------------------------------------*
  * Handler for undo keypad input
- *-----------------------------------------------------------------------*/
+ *-----------------------------------------------------------------------]]--
 function UndoContrSpawner( ply, ent )
 	if (!ent || !ent:IsValid()) then return end
 	ent:DoUndo( ply, true )

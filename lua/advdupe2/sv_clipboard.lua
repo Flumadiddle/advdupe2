@@ -38,9 +38,9 @@ end
 	Returns: <table> enttable
 ]]
 
-/*---------------------------------------------------------
+--[[---------------------------------------------------------
 	Returns a copy of the passed entity's table
----------------------------------------------------------*/
+---------------------------------------------------------]]--
 local function CopyEntTable( Ent, Offset )
 	-- Filter duplicator blocked entities out.
 	if Ent.DoNotDuplicate then return nil end

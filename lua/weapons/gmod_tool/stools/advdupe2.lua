@@ -952,7 +952,7 @@ if(CLIENT)then
 			RunConsoleCommand("advdupe2_offset_yaw", X2)
 		end
 		
-		/*if(Y~=0)then
+		--[[if(Y~=0)then
 			local modyaw = LocalPlayer():GetAngles().y
 			local modyaw2 = tonumber(LocalPlayer():GetInfo("advdupe2_offset_yaw"))
 			
@@ -978,7 +978,7 @@ if(CLIENT)then
 			
 			RunConsoleCommand("advdupe2_offset_pitch",pitch)
 			RunConsoleCommand("advdupe2_offset_roll",roll)
-		end*/
+		end]]--
 		
 	end
 
@@ -1719,7 +1719,7 @@ if(CLIENT)then
 		GhostEntity:SetColor( Color(255, 255, 255, 150) )
 
 		// If we're a ragdoll send our bone positions
-		/*if (EntTable.R) then
+		--[[if (EntTable.R) then
 			for k, v in pairs( EntTable.PhysicsObjects ) do
 				if(k==0)then
 					GhostEntity:SetNetworkedBonePosition( k, Vector(0,0,0), v.Angle )
@@ -1728,7 +1728,7 @@ if(CLIENT)then
 				end
 			end	
 			Phys.Angle = Angle(0,0,0)
-		end*/
+		end]]--
 		
 		if ( gParent ) then
 			local Parent = AdvDupe2.HeadGhost
