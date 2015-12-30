@@ -2,6 +2,8 @@
 
 Advanced Duplicator 2 is a [Garry's Mod][] addon which implements a tool similar to the Duplicator, but with many added features. It is a fork of (and not a direct successor to, despite the name) [Advanced Duplicator][].
 
+This fork of Advanced Duplicator 2 is modified for the purpose of being integrated into DarkRP. Changes reflect upon the need for stability & limitations for the gamemode.
+
 # Installation
 
 Currently, this version of AdvDupe2 isn't available on the Steam Workshop. The best way to get this addon is to clone this repository into your `addons` folder:
